@@ -28,7 +28,7 @@ char	*auto_detect_files(const char *dir_path, const char *ext)
 		exit(EXIT_FAILURE);
 	}
 	
-	printf(GREEN BOLD"\n🤖 Auto-detecting files is enable with extension '%s' in directory: %s\n" C_RESET, ext, dir_path);
+	printf(GREEN BOLD"\n🤖 Auto-detecting files is enable with extension '%s' in directory: %s\n\n" C_RESET, ext, dir_path);
 
 	while ((entry = readdir(dir)) != NULL)
 	{

@@ -184,7 +184,15 @@ void generate_makefile(t_make_config *config)
 		fprintf(file, "\t$(V)echo $(GREEN)\"🤖 [$(NAME)] Executable with libft created\"$(RESET)\n\n");
 	}
 
+	/*** Bonus Rule ***/
+	if (config->src_file_bonus && strlen(config->src_file_bonus) > 0)
+	{
+		fprintf(file, "bonus: $(OBJDIR) $(BONUS_OBJ) $(NAME)\n");
+		fprintf(file, "\t$(V)echo $(GREEN)\"🤖 BONUS OBJECTS READY\"$(RESET)\n\n");
+	}
+
 	fprintf(file, ".PHONY: all clean fclean re bonus\n");
+	fprintf(file, ".DEFAULT_GOAL := all\n");
 
 	fclose(file);
 }

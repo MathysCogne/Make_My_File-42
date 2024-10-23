@@ -20,6 +20,7 @@
 # include <sys/types.h>
 # include <fcntl.h>
 
+/***************** MACRO *******************/
 # define MAX_FILES	4096
 
 /***************** COLORS ******************/
@@ -33,6 +34,7 @@
 # define ITALIC		"\033[3m"
 # define UDERLINE	"\033[4m"
 # define C_RESET	"\033[0m"
+
 # define YorN		"( "BOLD GREEN"y"C_RESET BOLD" / "BOLD RED"n"C_RESET" )"
 
 /***************** STRUCT ******************/
@@ -54,7 +56,7 @@ typedef struct s_make_config
 	bool	create_dependencies;	/* Generate dependency files*/
 	bool	include_libft;			/* Include libft library	*/
 	short	create_lib_or_exec;		/* 0 executable, 1 library	*/
-	/* char	*output_dir;			/* Executable directory		*/ // FEATURE
+	/* char	*output_dir;				Executable directory	*/ // FEATURE
 }			t_make_config;
 
 /************** MAKE MY FILE ***************/
