@@ -1,0 +1,10 @@
+*.out
+*.a
+
+obj/
+obj/*.o
+*.o
+*.d
+
+.vscode/settings.json
+.vscode
