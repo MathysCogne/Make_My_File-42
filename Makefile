@@ -28,7 +28,7 @@
 #
 # Please report any bugs or suggestions at: https://github.com/MathysCogne/Make_My_File-42/issues
 
-NAME = MakeMyFile
+NAME = makemyfile
 
 SRCDIR = src
 OBJDIR = obj
@@ -99,3 +99,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re bonus
+.DEFAULT_GOAL := all
