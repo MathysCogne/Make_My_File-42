@@ -1,13 +1,8 @@
-███╗   ███╗ █████╗ ██╗  ██╗███████╗    ███╗   ███╗██╗   ██╗    ███████╗██╗██╗     ███████╗
-████╗ ████║██╔══██╗██║ ██╔╝██╔════╝    ████╗ ████║╚██╗ ██╔╝    ██╔════╝██║██║     ██╔════╝
-██╔████╔██║███████║█████╔╝ █████╗      ██╔████╔██║ ╚████╔╝     █████╗  ██║██║     █████╗  
-██║╚██╔╝██║██╔══██║██╔═██╗ ██╔══╝      ██║╚██╔╝██║  ╚██╔╝      ██╔══╝  ██║██║     ██╔══╝  
-██║ ╚═╝ ██║██║  ██║██║  ██╗███████╗    ██║ ╚═╝ ██║   ██║       ██║     ██║███████╗███████╗
-╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝   ╚═╝       ╚═╝     ╚═╝╚══════╝╚══════╝
-
 # Make My File - For project 42
 
-**Make My File** is a fully automated Makefile generator for C projects, optimized for 42 school. Run the executable in your project directory and follow the prompts in the console GUI.
+**Make My File** is a fully automated Makefile generator for C projects, optimized for 42 school.
+
+Run the executable in your project directory and follow the prompts in the console GUI.
 
 
 &nbsp;
@@ -18,6 +13,8 @@
 - Option to include bonus files for projects 42.
 - Create object directories and dependency files.
 - Link against the `ft_libft` library (42).
+
+&nbsp;
 
 ## Disclaimer
 
@@ -31,26 +28,21 @@ While **Make My File** automates Makefile generation, knowing how to create one 
 1. Clone the repository:
 ```bash
 git clone https://github.com/MathysCogne/Make_My_File-42.git
-cd Make_My_File-42
 ```
-2. Compile the project:
-```bash
-make
-```
-3. Run the executable in your project directory:
+2. Run the executable in your project directory:
 ```bash
 ./MakeMyFile
 ```
-4. Follow the on-screen instructions.
+3. Follow the on-screen instructions.
 
-![Configuration Screen](screenshots/config_screen.png)
-![Automatic Detection](screenshots/auto_detec_screen.png)
-![End Screen](screenshots/end_screen.png)
+<img src="screenshots/config_screen.png" alt="Configuration Screen" width="550" height="auto"/>
+<img src="screenshots/auto_detec_screen.png" alt="Automatic Detection" width="550" height="auto"/>
+<img src="screenshots/end_screen.png" alt="End Screen" width="550" height="auto"/>
 
 &nbsp;
 
 ## Contributing
 
-This project is licensed under the MIT License. Contributions are welcome! Feel free to submit a pull request or open an issue for suggestions.
+Contributions are welcome! Feel free to submit a pull request or open an issue for suggestions.
 
 &nbsp;
