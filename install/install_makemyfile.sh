@@ -2,7 +2,7 @@
 
 REPO_OWNER="MathysCogne"
 REPO_NAME="Make_My_File-42"
-RELEASE_VERSION="v1.0"
+RELEASE_VERSION="1.0.0"
 EXECUTABLE_NAME="makemyfile"
 INSTALL_DIR="/usr/local/bin"
 
