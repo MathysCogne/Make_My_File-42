@@ -1,6 +1,9 @@
 # Make My File - For project 42
+&nbsp;
 
-### ⚠️ Note: This project is extremely new and in beta testing
+### ⚠️ This project is extremely new and in beta testing.
+### Please report any bugs you find on Discord (@mrmilkshakes) or GitHub!
+&nbsp;
 
 **Make My File** is a fully automated Makefile generator for C projects, optimized for 42 school.
 
