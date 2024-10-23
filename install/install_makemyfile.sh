@@ -20,18 +20,18 @@ if [ "$EUID" -ne 0 ]
 fi
 
 # Download @latest version on gh
-echo -e "${GREEN}\n\n🚀  Downloading the latest version of ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN}...${C_RESET}\n"
+echo -e "${GREEN}\n🚀  Downloading the latest version of ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN}...${C_RESET}\n"
 curl -L -o "$EXECUTABLE_NAME" "https://github.com/$REPO_OWNER/$REPO_NAME/releases/download/$RELEASE_VERSION/$EXECUTABLE_NAME"
 
 chmod +x "$EXECUTABLE_NAME"
 
 # Move executable to install dir
-echo -e "${GREEN}💾  Installing ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN} to ${BOLD}${CYAN}$INSTALL_DIR${C_RESET}${GREEN}...${C_RESET}"
+echo -e "${GREEN}\n💾  Installing ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN} to ${BOLD}${CYAN}$INSTALL_DIR${C_RESET}${GREEN}...${C_RESET}"
 mv "$EXECUTABLE_NAME" "$INSTALL_DIR"
 
 if [ -f "$INSTALL_DIR/$EXECUTABLE_NAME" ]; then
-    echo -e "${GREEN}\n✅  ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN} installed successfully!${C_RESET}"
-	echo -e "${ITALIC}\n\n\n🔍 To create your Makefile, run the command '${CYAN}$EXECUTABLE_NAME${C_RESET}${ITALIC}' at the root of your project.${C_RESET}"
+    echo -e "${GREEN}✅  ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN} installed successfully!${C_RESET}"
+	echo -e "${ITALIC}🔍 To create your Makefile, run the command '${C_RESET}${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${ITALIC}' at the root of your project.${C_RESET}"
 else
     echo -e "${RED}\n\n❌  Installation failed. Please check your permissions.${C_RESET}"
 fi

@@ -35,13 +35,11 @@ curl -L -o install.sh https://github.com/MathysCogne/Make_My_File-42/releases/do
 ```
 2. To create a Makefile, navigate to the root of your project and run:
 ```bash
-./makemyfile
+makemyfile
 ```
 3. Follow the on-screen instructions.
 
-<img src="screenshots/config_screen.png" alt="Configuration Screen" width="550" height="auto"/>
-<img src="screenshots/auto_detec_screen.png" alt="Automatic Detection" width="550" height="auto"/>
-<img src="screenshots/end_screen.png" alt="End Screen" width="550" height="auto"/>
+![Screen](screenshots/screen.gif)
 
 &nbsp;
 

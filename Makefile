@@ -28,7 +28,7 @@
 #
 # Please report any bugs or suggestions at: https://github.com/MathysCogne/Make_My_File-42/issues
 
-NAME = makemyfile
+NAME = MakeMyFile
 
 SRCDIR = src
 OBJDIR = obj
