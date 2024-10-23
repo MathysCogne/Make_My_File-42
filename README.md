@@ -1,9 +1,10 @@
 # Make My File - For project 42
 
+### ⚠️ Note: This project is extremely new and in beta testing
+
 **Make My File** is a fully automated Makefile generator for C projects, optimized for 42 school.
 
 Run the executable in your project directory and follow the prompts in the console GUI.
-
 
 &nbsp;
 
