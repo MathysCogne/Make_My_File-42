@@ -29,13 +29,13 @@ While **Make My File** automates Makefile generation, knowing how to create one 
 
 ## Installation
 
-1. Clone the repository:
+1. Run the installer script: (Note: This does not work on Windows; please install manually with releases panel.)
 ```bash
-git clone https://github.com/MathysCogne/Make_My_File-42.git
+curl -L -o install.sh https://github.com/MathysCogne/Make_My_File-42/releases/download/1.0.0/install_makemyfile.sh && chmod +x install.sh && ./install.sh
 ```
-2. Run the executable in your project directory:
+2. To create a Makefile, navigate to the root of your project and run:
 ```bash
-./MakeMyFile
+./makemyfile
 ```
 3. Follow the on-screen instructions.
 
