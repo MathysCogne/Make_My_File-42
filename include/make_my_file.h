@@ -38,25 +38,24 @@
 /***************** STRUCT ******************/
 typedef struct s_make_config
 {
-	char	*name;					/* Nom de l'exécutable ou lib */
-	char	*src_dir;				/* Src Include */
-	char	*src_files;				/* Fichiers sources */
-	char	*src_file_bonus;		/* Fichiers bonus */
-	char	*header_dir;			/* Dir Include */
-	char	*header_files;			/* Fichiers d'en-tête */
-	char	*obj_dir;				/* Dossier pour les fichiers objets */
-	char	*obj_files;				/* Liste des fichiers objets générés */
-	char	*compiler;				/* Compilateur */
-	char	*cflags;				/* Options de compilation */
-	char	*ldflags;				/* Options de linker */
-	char	*libs;					/* Bibliothèques à lier */
-	bool	create_obj_dir;			/* Créer le dossier des objets */
-	bool	create_dependencies;	/* Générer des fichiers de dépendance */
-	bool	include_libft;			/* Inclure la bibliothèque libft */
-	short	create_lib_or_exec;		/* 0 pour exécutable, 1 pour bibliothèque */
-
+	char	*name;					/* Executable name 			*/
+	char	*src_dir;				/* Src dir					*/
+	char	*src_files;				/* Src files				*/
+	char	*src_file_bonus;		/* Src files bonus			*/
+	char	*header_dir;			/* Header dir				*/
+	char	*header_files;			/* Header files				*/
+	char	*obj_dir;				/* Object dir				*/
+	char	*obj_files;				/* Generated obj files		*/ // DELETE ?
+	char	*compiler;				/* Compiler					*/
+	char	*cflags;				/* Compilation flags		*/
+	char	*ldflags;				/* Linker flags				*/
+	char	*libs;					/* Libraries to link		*/
+	bool	create_obj_dir;			/* Create object directory	*/
+	bool	create_dependencies;	/* Generate dependency files*/
+	bool	include_libft;			/* Include libft library	*/
+	short	create_lib_or_exec;		/* 0 executable, 1 library	*/
+	/* char	*output_dir;			/* Executable directory		*/ // FEATURE
 }			t_make_config;
-	// char	*output_dir;			/* Dossier de sortie pour l'exécutable */
 
 /************** MAKE MY FILE ***************/
 short	make_my_file(void);
