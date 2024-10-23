@@ -85,20 +85,22 @@ void	print_menu(t_make_config *config)
 
 	while (1)
 	{	
-		printf(BOLD CYAN "Menu:\n" C_RESET);
-		printf(BOLD"'0'"C_RESET" Quit\n");
-		printf(BOLD"'1'"C_RESET" View the documentation (Help)\n");
-		printf(BOLD CYAN "Choose an option: " C_RESET);
+		printf(BOLD CYAN"\n0 ➤"C_RESET" View the documentation\n");
+		printf(BOLD CYAN"1 ➤"C_RESET" Exit\n");
+		printf(BOLD CYAN "\n➜ " C_RESET);
 		if (scanf("%d", &choice) != 1)
 		{
 			printf(RED "Invalid option\n\n" C_RESET);
 			while (getchar() != '\n');
 			continue ;
 		}
+
 		if (choice == 0)
+			print_documentation(config);
+		if (choice == 1)
 		{
 			print_clear();
-		print_banner();
+			print_banner();
 			printf("Thank you for using Make My File ! Enjoy your project ! 🚀\n\n");
 			printf("⭐ If you like this project, please star it on GitHub: ");
 			printf(BOLD CYAN "https://github.com/MathysCogne/Make_My_File-42" C_RESET "\n");
@@ -107,9 +109,6 @@ void	print_menu(t_make_config *config)
 			printf(BOLD"\nGoodbye ! 👋\n\n");
 			exit(0);
 		}
-
-		else if (choice == 1)
-			print_documentation(config);
 		else
 			printf(RED "Invalid option.\n\n" C_RESET);
 	}
@@ -121,24 +120,20 @@ void	print_config(t_make_config *config)
 	print_banner();
 
 	printf(GREEN BOLD "Congratulations ! 🥳🥳🥳 Your Makefile has been generated successfully !\n\n\n" C_RESET);
-	printf(BOLD CYAN "You are creating a %s", config->create_lib_or_exec ? "Library" : "Executable");
-	printf(", %s\n\n", config->name);
+	printf(CYAN BOLD"You are creating a Makefile that generates an "BOLD PURPLE"%s", config->create_lib_or_exec ? "library" : "executable");
+	printf(CYAN", named "PURPLE"%s"C_RESET":\n", config->name);
 
-	printf(BOLD CYAN "Here are the details of your project:\n" C_RESET);
+	printf("\n- For compilation, you will be using:: " BOLD PURPLE "%s %s %s" C_RESET "\n", config->compiler, config->cflags, config->ldflags);
+	printf("- Use and create an Object Directory / Dependency Files: " BOLD "%s" C_RESET "\n\n", config->create_obj_dir ? GREEN"Yes" : RED"No");
+
 	printf("- Source Files: " BOLD PURPLE "%s" C_RESET "\n", config->src_files);
-	printf("- Bonus Source Files: " BOLD PURPLE "%s" C_RESET "\n", 
-					strlen(config->src_file_bonus) > 0 ? config->src_file_bonus : RED"No bonus");
 	printf("- Header Files: " BOLD PURPLE "%s" C_RESET "\n", config->header_files);
-	printf("- Create an Object Directory: " BOLD "%s" C_RESET "\n", config->create_obj_dir ? GREEN"Yes" : RED"No");
-	printf("- Create Dependency Files: " BOLD "%s" C_RESET "\n", config->create_dependencies ? GREEN"Yes" : RED"No");
+	printf("- Bonus Source Files: " BOLD PURPLE "%s" C_RESET "\n\n", 
+					strlen(config->src_file_bonus) > 0 ? config->src_file_bonus : RED"No bonus");
 
-	printf(BOLD CYAN "\nFor compilation, you will be using:\n" C_RESET);
-	printf("- Compiler: " BOLD PURPLE "%s %s %s" C_RESET "\n", config->compiler, config->cflags, config->ldflags);
-
-	printf(BOLD CYAN "About libraries:\n" C_RESET);
 	printf("- Libraries included: " BOLD PURPLE "%s" C_RESET "\n",
-					strlen(config->libs) > 0 ? config->libs : "None");
-	printf("- Include Libft: " BOLD "%s" C_RESET "\n\n", config->include_libft ? GREEN"Yes" : PURPLE"No");
+					strlen(config->libs) > 0 ? config->libs : "None"C_RESET);
+	printf("- Libft inclusion: " BOLD "%s" C_RESET "\n\n\n", config->include_libft ? GREEN"Yes" : PURPLE"No");
 
 	printf("Thank you for using Make My File ! Enjoy your project ! 🚀\n\n");
 	printf("⭐ If you like this project, please star it on GitHub: ");

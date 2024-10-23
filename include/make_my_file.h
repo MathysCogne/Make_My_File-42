@@ -33,7 +33,7 @@
 # define ITALIC		"\033[3m"
 # define UDERLINE	"\033[4m"
 # define C_RESET	"\033[0m"
-# define YorN		""BOLD"( "GREEN"Y"C_RESET BOLD" / "RED"N"C_RESET BOLD" )"C_RESET""
+# define YorN		"( "BOLD GREEN"y"C_RESET BOLD" / "BOLD RED"n"C_RESET" )"
 
 /***************** STRUCT ******************/
 typedef struct s_make_config

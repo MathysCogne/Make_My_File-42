@@ -28,7 +28,7 @@ char	*auto_detect_files(const char *dir_path, const char *ext)
 		exit(EXIT_FAILURE);
 	}
 	
-	printf(GREEN BOLD"🤖 Auto-detecting files is enable with extension '%s' in directory: %s\n" C_RESET, ext, dir_path);
+	printf(GREEN BOLD"\n🤖 Auto-detecting files is enable with extension '%s' in directory: %s\n" C_RESET, ext, dir_path);
 
 	while ((entry = readdir(dir)) != NULL)
 	{
@@ -78,7 +78,7 @@ void	auto_detec_sources(t_make_config *config)
 		printf(RED BOLD"🤖 Auto-detecting for include_files DISABLE\n");
 	
 	if (!config->src_files || strlen(config->src_files) == 0)
-		printf(RED"Error.\nSource files could not be detected. "C_RESET"Please check the source files directory: %s\n", config->src_dir);
+		printf(RED"\nError.\nSource files could not be detected. "C_RESET"Please check the source files directory: %s\n\n", config->src_dir);
 	if (!config->header_files || strlen(config->header_files) == 0)
-		printf(RED"Error.\nHeader files not be detected. "C_RESET"Please check the header files directory: %s\n", config->header_dir);
+		printf(RED"\nError.\nHeader files not be detected. "C_RESET"Please check the header files directory: %s\n\n", config->header_dir);
 }
