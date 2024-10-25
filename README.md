@@ -14,12 +14,12 @@ Run the executable in your project directory and follow the prompts in the conso
 ## Features
 
 - Auto-detect source files and headers, including in subdirectories.
-- **Create project structure automatically if not present, including:**
+- Detect C project structure and Create project structure automatically if not present, including:
 	- main.c, name-app.c, and name-app.h
 	- Directories: include/ and src/
 	- A corresponding Makefile
 	- A .gitignore file for c project
-- Detect C project structure
+
 - Option to include bonus files for projects 42.
 - Create object directories and dependency files.
 - Link against the `ft_libft` library (42).
@@ -40,13 +40,18 @@ While **Make My File** automates Makefile generation, knowing how to create one 
 ```bash
 curl -L -o install.sh https://github.com/MathysCogne/Make_My_File-42/releases/download/1.1.0/install_makemyfile.sh && chmod +x install.sh && sudo ./install.sh
 ```
+
+&nbsp;
+
 2. To create a Makefile, navigate to the root of your project and run:
 ```bash
 makemyfile
 ```
-```bash
+
 Tip: If you don’t have a project structure yet (meaning there are no .c files in the directory), the app will offer to create one for you. It's a great way to save time if you want to get started quickly!
-```
+
+&nbsp;
+
 3. Follow the on-screen instructions.
 
 ![Screen](screenshots/screen.gif)
