@@ -38,7 +38,7 @@ While **Make My File** automates Makefile generation, knowing how to create one 
 
 1. Run the installer script: (Note: This does not work on Windows; please install manually with releases panel.)
 ```bash
-sudo bash -c "$(curl -L http://bit.ly/4eO4R1v)"
+sudo bash -c "$(curl -L https://github.com/MathysCogne/Make_My_File-42/releases/download/1.1.0/install_makemyfile.sh)"
 ```
 
 &nbsp;
