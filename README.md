@@ -20,7 +20,7 @@ Run the executable in your project directory and follow the prompts in the conso
 	- A corresponding Makefile
 	- A .gitignore file for c project
 
-- Option to include bonus files for projects 42.
+- Auto-detect bonus source files for projects 42.
 - Create object directories and dependency files.
 - Link against the `ft_libft` library (42).
 - 'Regen' rule in the generated Makefile for updates.
