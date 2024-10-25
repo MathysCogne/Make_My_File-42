@@ -17,11 +17,16 @@
 # include <stdlib.h>
 # include <string.h>
 # include <dirent.h>
-# include <sys/types.h>
 # include <fcntl.h>
+# include <ctype.h>
+# include <sys/types.h>
+# include <sys/stat.h>
 
-/***************** MACRO *******************/
-# define MAX_FILES	4096
+/***************** MACROS *******************/
+# define MAX_FILES	1024
+
+# define SOURCE_EXTENSION ".c"
+# define HEADER_EXTENSION ".h"
 
 /***************** COLORS ******************/
 # define RED		"\033[31m"
@@ -35,7 +40,7 @@
 # define UDERLINE	"\033[4m"
 # define C_RESET	"\033[0m"
 
-# define YorN		"( "BOLD GREEN"y"C_RESET BOLD" / "BOLD RED"n"C_RESET" )"
+# define YorN		""C_RESET"["BOLD GREEN"y" C_RESET BOLD" / "BOLD RED"n"C_RESET"]"
 
 /***************** STRUCT ******************/
 typedef struct s_make_config
@@ -47,7 +52,6 @@ typedef struct s_make_config
 	char	*header_dir;			/* Header dir				*/
 	char	*header_files;			/* Header files				*/
 	char	*obj_dir;				/* Object dir				*/
-	char	*obj_files;				/* Generated obj files		*/ // DELETE ?
 	char	*compiler;				/* Compiler					*/
 	char	*cflags;				/* Compilation flags		*/
 	char	*ldflags;				/* Linker flags				*/
@@ -60,13 +64,22 @@ typedef struct s_make_config
 }			t_make_config;
 
 /************** MAKE MY FILE ***************/
-short	make_my_file(void);
+/* PROJECT DIR SETUP */
+short	check_directory(void);
+void	create_directory_project(t_make_config *config);
+
+/* GENERATION MAKEFILE */
+short	make_my_file(t_make_config *config);
 short	init_config(t_make_config *config);
 void	auto_detec_sources(t_make_config *config);
+char	*auto_detect_files(const char *dir_path, const char *ext);
 void	generate_makefile(t_make_config *config);
 
 /****************** UTILS *******************/
 void	free_malloc(t_make_config *config);
+void	default_config(t_make_config *config);
+char	*get_input(const char *prompt);
+char	*get_default_input(const char *prompt, const char *default_value);
 
 /****************** PRINT *******************/
 void	print_banner(void);
@@ -75,5 +88,6 @@ void	print_clear(void);
 void	print_documentation(t_make_config *config);
 void	print_menu(t_make_config *config);
 void	print_config(t_make_config *config);
+void	print_config_setup_project(t_make_config *config);
 
 #endif

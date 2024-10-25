@@ -11,7 +11,14 @@
 
 int	main(void)
 {
-	if (make_my_file() == -1)
+	t_make_config	config;
+	
+	if (check_directory())
+	{
+		create_directory_project(&config);
+		return (0);
+	}
+	if (make_my_file(&config))
 	{
 		printf(RED"Error.\n");
 		return (1);

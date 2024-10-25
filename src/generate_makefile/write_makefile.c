@@ -35,7 +35,7 @@ void generate_makefile(t_make_config *config)
 	fprintf(file, "OBJ = $(SRC:.c=.o)\n\n");
 
 	fprintf(file, "SRC := $(addprefix $(SRCDIR)/, $(SRC))\n");
-	fprintf(file, "OBJ := $(addprefix $(OBJDIR)/, $(notdir $(OBJ)))\n\n");
+	fprintf(file, "OBJ := $(patsubst $(SRCDIR)/%%, $(OBJDIR)/%%, $(OBJ))\n\n");
 
 	/*** Bonus Files ***/
 	if (config->src_file_bonus && strlen(config->src_file_bonus) > 0)
@@ -91,6 +91,11 @@ void generate_makefile(t_make_config *config)
 
 		fprintf(file, "$(DEPDIR):\n");
 		fprintf(file, "\t$(V)mkdir -p $(DEPDIR) || true\n\n");
+
+		fprintf(file, "$(OBJDIR)/%%.o: $(SRCDIR)/%%.c\n");
+		fprintf(file, "\t@mkdir -p $(dir $@)\n");
+		fprintf(file, "\t$(V)$(CC) $(CFLAGS) -MMD -MP -c $< -o $@\n\n");
+
 		fprintf(file, "-include $(DEP)\n\n");
 	}
 
@@ -164,7 +169,12 @@ void generate_makefile(t_make_config *config)
 		fprintf(file, "\t$(V)echo $(GREEN)\"🤖 BONUS OBJECTS READY\"$(RESET)\n\n");
 	}
 
-	fprintf(file, ".PHONY: all clean fclean re bonus\n");
+	/*** Re Gen Rule ***/
+	fprintf(file, "# Makefile Reconfiguration \n");
+	fprintf(file, "regen:\n");
+	fprintf(file, "\tmakemyfile");
+
+	fprintf(file, ".PHONY: all clean fclean re bonus regen\n");
 	fprintf(file, ".DEFAULT_GOAL := all\n");
 
 	fclose(file);

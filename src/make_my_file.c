@@ -9,21 +9,14 @@
 
 #include "make_my_file.h"
 
-short	make_my_file(void)
+short	make_my_file(t_make_config *config)
 {
-	t_make_config	config;
 
-	if (init_config(&config) == 1)
-		return (1);
+	init_config(config);			// GEN CONFIG
+	auto_detec_sources(config);		// DETECTION SOURCES
+	generate_makefile(config);		// GEN MAKEFILE
+	print_config(config);			// END SCREEN
 
-
-	print_clear();
-	auto_detec_sources(&config);
-	print_point_loading();
-	generate_makefile(&config);
-
-	print_config(&config);
-
-	free_malloc(&config);
+	free_malloc(config);
 	return (0);
 }

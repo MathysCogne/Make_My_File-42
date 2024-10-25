@@ -9,34 +9,6 @@
 
 #include "make_my_file.h"
 
-char *get_input(const char *prompt)
-{
-	char *input = malloc(256);
-	if (!input)
-		return NULL;
-
-	print_clear();
-	print_banner();
-	printf("%s", prompt);
-
-	if (fgets(input, 256, stdin) != NULL) {
-		size_t len = strlen(input);
-		if (len > 0 && input[len - 1] == '\n')
-			input[len - 1] = '\0';
-	}
-	return (input);
-}
-
-static char *get_default_input(const char *prompt, const char *default_value)
-{
-	char *input = get_input(prompt);
-	if (strlen(input) == 0) {
-		free(input);
-		input = strdup(default_value);
-	}
-	return (input);
-}
-
 short init_config(t_make_config *config)
 {
 	bool	fast_mode = false;
@@ -53,25 +25,12 @@ short init_config(t_make_config *config)
 		config->create_lib_or_exec = (create_lib_or_exec[0] == '1') ? 1 : 0;
 		free(create_lib_or_exec);
 
-		config->name = get_default_input(BOLD"1. "C_RESET BOLD CYAN"Enter the name"C_RESET" of the executable or library: \n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "ProjectName");
+		config->name = get_default_input(BOLD"1. "C_RESET BOLD CYAN"Enter the name"C_RESET" of the executable or library: \n\n > "ITALIC"No space in name please\n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "ProjectName");
 		config->src_dir = get_default_input(BOLD"2. "C_RESET"Enter the "BOLD CYAN"source directory"C_RESET" or leave blank for "BOLD CYAN"default"C_RESET" "ITALIC"(Default is 'src'): \n\n"
 										"> If using the current directory, please type '.'\n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "src");
 		config->header_dir = get_default_input(BOLD"3. "C_RESET"Enter the "BOLD CYAN"includes directory"C_RESET" or leave blank for "BOLD CYAN"default"C_RESET" "ITALIC"(Default is 'include'): \n\n"
 										"> If using the current directory, please type '.'\n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "include");
-
-		config->src_files = strdup("");
-		config->src_file_bonus = strdup("");
-		config->header_files = strdup("");
-		config->obj_dir = strdup("obj");
-		config->obj_files = NULL;
-		config->compiler = strdup("cc");
-		config->cflags = strdup("-Wall -Wextra -Werror");
-		config->include_libft = false;
-		config->ldflags = strdup("");
-		config->libs = strdup("");
-		config->create_obj_dir = true;
-		config->create_dependencies = true;
-		
+		default_config(config); // Set other params
 		return (0);
 	}
 
@@ -80,7 +39,7 @@ short init_config(t_make_config *config)
 	config->create_lib_or_exec = (create_lib_or_exec[0] == '1') ? 1 : 0;
 	free(create_lib_or_exec);
 
-	config->name = get_default_input(BOLD"2. "C_RESET BOLD CYAN"Enter the name"C_RESET" of the executable or library: \n\n" BOLD CYAN"➜"C_RESET" ", "ProjectName");
+	config->name = get_default_input(BOLD"2. "C_RESET BOLD CYAN"Enter the name"C_RESET" of the executable or library: \n\n > "ITALIC"No space in name please\n\n" BOLD CYAN"➜"C_RESET" ", "ProjectName");
 	config->src_dir = get_default_input(BOLD"2. "C_RESET"Enter the "BOLD CYAN"source directory"C_RESET" or leave blank for "BOLD CYAN"default"C_RESET" "ITALIC"(Default is 'src'): \n\n"
 										"> If using the current directory, please type '.'\n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "src");
 	config->header_dir = get_default_input(BOLD"3. "C_RESET"Enter the "BOLD CYAN"includes directory"C_RESET" or leave blank for "BOLD CYAN"default"C_RESET" "ITALIC"(Default is 'include'): \n\n"
@@ -93,7 +52,6 @@ short init_config(t_make_config *config)
 	config->header_files = get_default_input(BOLD"7. "C_RESET"Enter the "BOLD CYAN"header files"C_RESET" or leave blank for "BOLD CYAN"auto-detection"C_RESET" "ITALIC"(Ex: ft.h): \n\n"
 										C_RESET"🤖"ITALIC" If left blank, header files will be automatically detected in the selected directory\n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "");
 	config->obj_dir = strdup("obj");
-	config->obj_files = NULL;
 
 	config->compiler = get_default_input(BOLD"8. "C_RESET BOLD CYAN"Enter the compiler"C_RESET" "ITALIC"(Default is 'cc' leave blank): \n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "cc");
 	config->cflags = get_default_input(BOLD"9. "C_RESET BOLD CYAN"Enter the compilation flags"C_RESET" "ITALIC"(Default '-Wall -Wextra -Werror' leave blank): \n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "-Wall -Wextra -Werror");

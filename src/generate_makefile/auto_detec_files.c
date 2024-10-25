@@ -9,52 +9,70 @@
 
 #include "make_my_file.h"
 
-char	*auto_detect_files(const char *dir_path, const char *ext)
+/* Detect files with a specific extension in the given directory */
+static void	detect_files(const char *base_dir, const char *current_dir, const char *ext, char **result)
 {
-	DIR				*dir;
-	struct dirent	*entry;
-	char			*result;
-	char 			*tmp;
+	DIR *dir;
+	struct dirent *entry;
 
-	result = malloc(sizeof(char) * MAX_FILES);
-	if (!result)
-		return (NULL);
-	result[0] = '\0';
-	dir = opendir(dir_path);
+	dir = opendir(current_dir);
 	if (!dir)
 	{
-		printf("Error auto-detecting.\nCould not open directory: %s\n", dir_path);
-		free(result);
-		exit(EXIT_FAILURE);
+		printf("Error auto-detecting.\nCould not open directory: %s\n", current_dir);
+		return;
 	}
-	
-	printf(GREEN BOLD"\n🤖 Auto-detecting files is enable with extension '%s' in directory: %s\n\n" C_RESET, ext, dir_path);
 
 	while ((entry = readdir(dir)) != NULL)
 	{
-		/* Check ext name */
-		if (strstr(entry->d_name, ext))
+		if (strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0)
 		{
-			/* Add files to list */
-			if (strlen(result) + strlen(entry->d_name) + 2 > MAX_FILES)
+			char path[MAX_FILES];
+			snprintf(path, sizeof(path), "%s/%s", current_dir, entry->d_name);
+			// Check if a directory
+			struct stat statbuf;
+			if (stat(path, &statbuf) == 0 && S_ISDIR(statbuf.st_mode))
+				detect_files(base_dir, path, ext, result);
+			else if (strstr(entry->d_name, ext)) // Check the extension
 			{
-				// Realloc if > max files
-				tmp = realloc(result, strlen(result) + strlen(entry->d_name) + 2);
-				if (!tmp)
+				// Add the file to the list
+				char *relative_path = path + strlen(base_dir) + 1;
+				if (strlen(*result) + strlen(relative_path) + 2 > MAX_FILES)
 				{
-					free(result);
-					return (NULL);
+					// Realloc if exceeding max files
+					char *tmp = realloc(*result, strlen(*result) + strlen(relative_path) + 2);
+					if (!tmp)
+					{
+						free(*result);
+						*result = NULL;
+						closedir(dir);
+						return;
+					}
+					*result = tmp;
 				}
-				result = tmp;
+				strcat(*result, relative_path);
+				strcat(*result, " ");
+				printf(C_RESET ITALIC "Detected file: %s" C_RESET "\n", relative_path);
 			}
-			strcat(result, entry->d_name);
-			strcat(result, " ");
-
-			printf(C_RESET ITALIC "Detected file: %s" C_RESET "\n", entry->d_name);
 		}
 	}
 	closedir(dir);
-	return result;
+}
+
+char	*auto_detect_files(const char *dir_path, const char *ext)
+{
+	char *result = malloc(sizeof(char) * MAX_FILES);
+	if (!result)
+		return (NULL);
+	result[0] = '\0';
+
+	printf(GREEN BOLD"\n🤖 Auto-detecting files is enabled with extension '%s' in directory: %s\n\n" C_RESET, ext, dir_path);
+
+	detect_files(dir_path, dir_path, ext, &result);
+
+	if (strlen(result) == 0)
+		printf(RED"\nNo files detected with extension '%s' in directory: %s\n\n" C_RESET, ext, dir_path);
+
+	return (result);
 }
 
 void	auto_detec_sources(t_make_config *config)
@@ -76,9 +94,7 @@ void	auto_detec_sources(t_make_config *config)
 		config->header_files = auto_detect_files(config->header_dir, ".h");
 	else
 		printf(RED BOLD"🤖 Auto-detecting for include_files DISABLE\n");
-	
-	if (!config->src_files || strlen(config->src_files) == 0)
-		printf(RED"\nError.\nSource files could not be detected. "C_RESET"Please check the source files directory: %s\n\n", config->src_dir);
-	if (!config->header_files || strlen(config->header_files) == 0)
-		printf(RED"\nError.\nHeader files not be detected. "C_RESET"Please check the header files directory: %s\n\n", config->header_dir);
+
+	print_point_loading();
 }
+
