@@ -104,5 +104,7 @@ re: fclean all
 
 # Makefile Reconfiguration 
 regen:
-	makemyfile.PHONY: all clean fclean re bonus regen
+	makemyfile
+
+.PHONY: all clean fclean re bonus regen
 .DEFAULT_GOAL := all

@@ -172,7 +172,7 @@ void generate_makefile(t_make_config *config)
 	/*** Re Gen Rule ***/
 	fprintf(file, "# Makefile Reconfiguration \n");
 	fprintf(file, "regen:\n");
-	fprintf(file, "\tmakemyfile");
+	fprintf(file, "\tmakemyfile\n\n");
 
 	fprintf(file, ".PHONY: all clean fclean re bonus regen\n");
 	fprintf(file, ".DEFAULT_GOAL := all\n");
