@@ -13,17 +13,16 @@ Run the executable in your project directory and follow the prompts in the conso
 
 ## Features
 
-- Auto-detect source files and headers, including in subdirectories.
+- Auto-detect source files, headers and bonus files, including in subdirectories.
 - Detect C project structure and Create project structure automatically if not present, including:
-	- main.c, name-app.c, and name-app.h
+	- main.c, name_app.c, and name_app.h
 	- Directories: include/ and src/
 	- A corresponding Makefile
 	- A .gitignore file for c project
 
-- Auto-detect bonus source files for projects 42.
+- Link against the `libft` library (42).
+- Include and auto-download `MiniLibX` library (42).
 - Create object directories and dependency files.
-- Link against the `ft_libft` library (42).
-- 'Regen' rule in the generated Makefile for updates.
 
 &nbsp;
 
@@ -38,7 +37,7 @@ While **Make My File** automates Makefile generation, knowing how to create one 
 
 1. Run the installer script: (Note: This does not work on Windows; please install manually with releases panel.)
 ```bash
-sudo bash -c "$(curl -L https://github.com/MathysCogne/Make_My_File-42/releases/download/1.1.0/install_makemyfile.sh)"
+sudo bash -c "$(curl -L https://github.com/MathysCogne/Make_My_File-42/releases/download/1.2.0/install_makemyfile.sh)"
 ```
 
 &nbsp;
