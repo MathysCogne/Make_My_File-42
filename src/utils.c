@@ -56,6 +56,7 @@ void	default_config(t_make_config *config)
 	config->compiler = strdup("cc");
 	config->cflags = strdup("-Wall -Wextra -Werror");
 	config->include_libft = false;
+	config->include_mlx = false;
 	config->ldflags = strdup("");
 	config->libs = strdup("");
 	config->create_obj_dir = true;

@@ -54,7 +54,7 @@ short	check_directory(void)
 		snprintf(message, sizeof(message),
 				BOLD YELLOW"WARNING: "C_RESET YELLOW"You must be in the project's root directory to proceed.\n" C_RESET
 				GREEN BOLD"\n🤖 Auto-Detect - C project detected in current directory: "C_RESET"%s\n\n" 
-				CYAN BOLD"\nPress any key to continue...\n" C_RESET, cwd);
+				CYAN BOLD"\nPress any key to continue... "C_RESET"For confirm you're in the root directory of your project.\n" C_RESET, cwd);
 		get_input(message);
 		free(c_files);
 		return (0);
@@ -62,6 +62,7 @@ short	check_directory(void)
 	else
 	{
 		snprintf(message, sizeof(message),
+				BOLD YELLOW"WARNING: "C_RESET YELLOW"You must be in the project's root directory to proceed.\n" C_RESET
 				YELLOW BOLD"🤖 Auto-Detect - No C project detected in directory: "C_RESET"%s\n" 
 				CYAN BOLD"\nWould you like to generate a basic C project in this directory ? "YorN"\n\n" C_RESET, cwd);
 		char *input = get_default_input(message, "n");

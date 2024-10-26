@@ -19,6 +19,7 @@
 # include <dirent.h>
 # include <fcntl.h>
 # include <ctype.h>
+# include <time.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 
@@ -59,6 +60,7 @@ typedef struct s_make_config
 	bool	create_obj_dir;			/* Create object directory	*/
 	bool	create_dependencies;	/* Generate dependency files*/
 	bool	include_libft;			/* Include libft library	*/
+	bool	include_mlx;			/* Include MLX library		*/
 	short	create_lib_or_exec;		/* 0 executable, 1 library	*/
 	/* char	*output_dir;				Executable directory	*/ // FEATURE
 }			t_make_config;

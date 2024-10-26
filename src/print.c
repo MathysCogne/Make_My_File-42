@@ -49,10 +49,6 @@ void	print_documentation(t_make_config *config)
 	print_clear();
 	print_banner();
 
-	printf(BOLD GREEN "📄 Documentation for Make My File:\n" C_RESET);
-	printf(BOLD CYAN "This Makefile is generated automatically by the Make My File program.\n" C_RESET);
-	printf("It facilitates the compilation of C programs.\n\n");
-
 	printf(MAKEFILE_DOC);
 
 	print_menu(config);
@@ -112,7 +108,8 @@ void	print_config(t_make_config *config)
 
 	printf("- Libraries included: " BOLD PURPLE "%s" C_RESET "\n",
 					strlen(config->libs) > 0 ? config->libs : "None"C_RESET);
-	printf("- Libft inclusion: " BOLD "%s" C_RESET "\n\n\n", config->include_libft ? GREEN"Yes" : PURPLE"No");
+	printf("- Libft inclusion: " BOLD "%s" C_RESET "\n", config->include_libft ? GREEN"Yes" : PURPLE"No");
+	printf("- MLX inclusion: " BOLD "%s" C_RESET "\n\n\n", config->include_mlx ? GREEN"Yes" : PURPLE"No");
 
 	printf("Thank you for using Make My File ! Enjoy your project ! 🚀\n\n");
 	printf("⭐ If you like this project, please star it on GitHub: ");

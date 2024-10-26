@@ -14,7 +14,8 @@ short init_config(t_make_config *config)
 	bool	fast_mode = false;
 	char *fast_mode_input = get_default_input(BOLD GREEN"Welcome to the Make My File!\n\n" C_RESET
 										"This application will help you create a Makefile.\n\n\n"
-										BOLD"🚀 "C_RESET"Enable "BOLD CYAN"fast mode "C_RESET""YorN" ?\n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "n");
+										BOLD"🚀 "C_RESET"Enable "BOLD CYAN"fast mode "C_RESET""YorN" ?\n\n"C_RESET 
+										"> If you want to use Libft or MiniLibX (minilibx-linux), please choose No. \n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "src");
 	fast_mode = (fast_mode_input[0] == 'y' || fast_mode_input[0] == 'Y');
 	free(fast_mode_input);
 
@@ -59,10 +60,14 @@ short init_config(t_make_config *config)
 	config->include_libft = (include_libft[0] == 'y' || include_libft[0] == 'Y');
 	free(include_libft);
 
-	config->ldflags = get_default_input(BOLD"11. "C_RESET BOLD CYAN"Enter the linker flags"C_RESET" (LDFLAGS) or leave blank for none: \n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "");
-	config->libs = get_default_input(BOLD"12. "C_RESET"Enter "BOLD CYAN"the libraries to link"C_RESET" or leave blank if none: \n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "");
+	char *include_mlx = get_default_input(BOLD"11. "C_RESET"Include "BOLD CYAN"MLX (minilibx-linux)"YorN" "C_RESET"?  "C_RESET ITALIC"(Default 'No')\n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "n");
+	config->include_mlx = (include_mlx[0] == 'y' || include_mlx[0] == 'Y');
+	free(include_mlx);
 
-	char *create_obj_dir = get_default_input(BOLD"13. "C_RESET"Create and using "BOLD CYAN"object directory with dependency files" "YorN" C_RESET" ? "C_RESET ITALIC "(Default 'Yes')\n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "y");
+	config->ldflags = get_default_input(BOLD"12. "C_RESET BOLD CYAN"Enter the linker flags"C_RESET" (LDFLAGS) or leave blank for none: \n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "");
+	config->libs = get_default_input(BOLD"13. "C_RESET"Enter "BOLD CYAN"the libraries to link"C_RESET" or leave blank if none: \n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "");
+
+	char *create_obj_dir = get_default_input(BOLD"14. "C_RESET"Create and using "BOLD CYAN"object directory with dependency files" "YorN" C_RESET" ? "C_RESET ITALIC "(Default 'Yes')\n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "y");
 	config->create_obj_dir = (create_obj_dir[0] == 'y' || create_obj_dir[0] == 'Y');
 	config->create_dependencies = config->create_obj_dir;
 	free(create_obj_dir);
