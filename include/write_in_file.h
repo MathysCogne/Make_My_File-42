@@ -32,9 +32,11 @@
 #define PROJECT_H_CONTENT \
 	"#ifndef %s_H\n" \
 	"# define %s_H\n\n" \
-	"# include <stdio.h>\n\n" \
+	"/* #include \"libft.h\" */\n" \
+	"/* #include \"mlx.h\" */\n\n" \
+	"#include <stdio.h>\n\n" \
 	"/************** %s **************/\n" \
-	"int	%s(void);\n\n" \
+	"int %s(void);\n\n" \
 	"#endif\n"
 
 #define GITIGNORE_CONTENT \

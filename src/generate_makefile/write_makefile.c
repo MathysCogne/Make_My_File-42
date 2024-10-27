@@ -58,13 +58,13 @@ void generate_makefile(t_make_config *config)
 		fprintf(file, "# Libft - Please configure your own path if different\n");
 		fprintf(file, "LIBFT_DIR := libft\n");
 		fprintf(file, "LIBFT := $(LIBFT_DIR)/libft.a\n");
-		fprintf(file, "LIBFT_INCLUDE := $(LIBFT_DIR)\n");
+		fprintf(file, "LIBFT_INCLUDE := $(LIBFT_DIR)#/include Your header file in include dir ?\n");
 	}
 
 	/*** MINILIBX DEFINE ***/
 	if (config->include_mlx)
 	{
-		fprintf(file, "# MiniLibx\n");
+		fprintf(file, "# MiniLibx -> Please include in header file: #include \"mlx.h\"\n");
 		fprintf(file, "MINILIBX_DIR := ./minilibx-linux\n");
 		fprintf(file, "MLX := $(MINILIBX_DIR)/libmlx.a\n");
 	}
