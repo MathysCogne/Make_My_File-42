@@ -44,51 +44,6 @@ void	print_clear(void)
 	#endif
 }
 
-void	print_documentation(t_make_config *config)
-{
-	print_clear();
-	print_banner();
-
-	printf(MAKEFILE_DOC);
-
-	print_menu(config);
-}
-
-void	print_menu(t_make_config *config)
-{
-	int choice;
-
-	while (1)
-	{	
-		printf(BOLD CYAN"\n0 ➤"C_RESET" View the documentation\n");
-		printf(BOLD CYAN"1 ➤"C_RESET" Exit\n");
-		printf(BOLD CYAN "\n➜ " C_RESET);
-		if (scanf("%d", &choice) != 1)
-		{
-			printf(RED "Invalid option\n\n" C_RESET);
-			while (getchar() != '\n');
-			continue ;
-		}
-
-		if (choice == 0)
-			print_documentation(config);
-		if (choice == 1)
-		{
-			print_clear();
-			print_banner();
-			printf("Thank you for using Make My File ! Enjoy your project ! 🚀\n\n");
-			printf("⭐ If you like this project, please star it on GitHub: ");
-			printf(BOLD CYAN "https://github.com/MathysCogne/Make_My_File-42" C_RESET "\n");
-			printf("🤖 Report any bugs or suggestions at: ");
-			printf(BOLD CYAN "https://github.com/MathysCogne/Make_My_File-42/issues" C_RESET "\n\n");
-			printf(BOLD"\nGoodbye ! 👋\n\n");
-			exit(0);
-		}
-		else
-			printf(RED "Invalid option.\n\n" C_RESET);
-	}
-}
-
 void	print_config(t_make_config *config)
 {
 	print_clear();
@@ -117,7 +72,7 @@ void	print_config(t_make_config *config)
 	printf("🤖 Report any bugs or suggestions at: ");
 	printf(BOLD CYAN "https://github.com/MathysCogne/Make_My_File-42/issues" C_RESET "\n\n");
 
-	print_menu(config);
+	exit(EXIT_SUCCESS);
 }
 
 void	print_config_setup_project(t_make_config *config)
@@ -137,5 +92,51 @@ void	print_config_setup_project(t_make_config *config)
 	printf("🤖 Report any bugs or suggestions at: ");
 	printf(BOLD CYAN "https://github.com/MathysCogne/Make_My_File-42/issues" C_RESET "\n\n");
 
-	print_menu(config);
+	exit(EXIT_SUCCESS);
 }
+/* ARCHIVE ******************************************************************************
+*void	print_documentation(t_make_config *config)
+*{
+*	print_clear();
+*	print_banner();
+*
+*	printf(MAKEFILE_DOC);
+*
+*	print_menu(config);
+*}
+*
+*void	print_menu(t_make_config *config)
+*{
+*	int choice;
+*
+*	while (1)
+*	{	
+*		printf(BOLD CYAN"\n0 ➤"C_RESET" View the documentation\n");
+*		printf(BOLD CYAN"1 ➤"C_RESET" Exit\n");
+*		printf(BOLD CYAN "\n➜ " C_RESET);
+*		if (scanf("%d", &choice) != 1)
+*		{
+*			printf(RED "Invalid option\n\n" C_RESET);
+*			while (getchar() != '\n');
+*			continue ;
+*		}
+*
+*		if (choice == 0)
+*			print_documentation(config);
+*		if (choice == 1)
+*		{
+*			print_clear();
+*			print_banner();
+*			printf("Thank you for using Make My File ! Enjoy your project ! 🚀\n\n");
+*			printf("⭐ If you like this project, please star it on GitHub: ");
+*			printf(BOLD CYAN "https://github.com/MathysCogne/Make_My_File-42" C_RESET "\n");
+*			printf("🤖 Report any bugs or suggestions at: ");
+*			printf(BOLD CYAN "https://github.com/MathysCogne/Make_My_File-42/issues" C_RESET "\n\n");
+*			printf(BOLD"\nGoodbye ! 👋\n\n");
+*			exit(0);
+*		}
+*		else
+*			printf(RED "Invalid option.\n\n" C_RESET);
+*	}
+*}
+***********************************************************************************************/

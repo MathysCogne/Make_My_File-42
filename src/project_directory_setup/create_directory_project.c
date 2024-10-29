@@ -15,7 +15,7 @@ static void	config_default_project(t_make_config *config)
 	char src_files[52];
 	char header_files[52];
 	
-	config->name = get_default_input(BOLD"1/1. "C_RESET BOLD CYAN"Enter the name"C_RESET" of the project: \n\n > "ITALIC"No space in name please\n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "ProjectName");
+	config->name = get_default_input(BOLD"[1/1]. "C_RESET BOLD CYAN"Enter the name"C_RESET" of the project: \n\n > "ITALIC"No space in name please\n\n"C_RESET BOLD CYAN"➜"C_RESET" ", "ProjectName");
 	config->create_lib_or_exec = false;
 	config->src_dir = strdup("src");
 	config->header_dir = strdup("include");

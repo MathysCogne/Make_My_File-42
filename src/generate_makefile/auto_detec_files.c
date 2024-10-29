@@ -22,6 +22,7 @@ static void	detect_files(const char *base_dir, const char *current_dir, const ch
 		return;
 	}
 
+
 	while ((entry = readdir(dir)) != NULL)
 	{
 		if (strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0)

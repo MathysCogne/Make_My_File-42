@@ -12,7 +12,8 @@
 int	main(void)
 {
 	t_make_config	config;
-	
+
+	check_for_updates();
 	if (check_directory())
 	{
 		create_directory_project(&config);
