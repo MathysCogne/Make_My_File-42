@@ -12,13 +12,13 @@ CYAN="\033[36m"
 RED="\033[31m"
 C_RESET="\033[0m"
 
-# Root verif
+# Root verification
 if [ "$EUID" -ne 0 ]; then
 	echo -e "${RED}\n\n⛔  Please run as root or use ${BOLD}sudo${C_RESET}${RED} to install the program.${C_RESET}"
 	exit
 fi
 
-# Download latest version on GH
+# Download the latest version from GitHub
 LATEST_RELEASE=$(curl -s -H "Accept: application/vnd.github.v3+json" \
 	https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases/latest | \
 	grep -Po '"tag_name": "\K.*?(?=")')
@@ -28,12 +28,17 @@ if [ -z "$LATEST_RELEASE" ]; then
 	exit 1
 fi
 
+# Check if the download was successful
 echo -e "${GREEN}\n🚀  Downloading the latest version ($LATEST_RELEASE) of ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN}...${C_RESET}\n"
 curl -L -o "$EXECUTABLE_NAME" "https://github.com/$REPO_OWNER/$REPO_NAME/releases/download/$LATEST_RELEASE/$EXECUTABLE_NAME"
+if [ $? -ne 0 ]; then
+	echo -e "${RED}❌  Error: Download failed. Please check your network connection.${C_RESET}"
+	exit 1
+fi
 
 chmod +x "$EXECUTABLE_NAME"
 
-# Move to directory install
+# Move to the installation directory
 echo -e "${GREEN}\n💾  Installing ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN} to ${BOLD}${CYAN}$INSTALL_DIR${C_RESET}${GREEN}...${C_RESET}"
 mv "$EXECUTABLE_NAME" "$INSTALL_DIR"
 
