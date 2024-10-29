@@ -11,6 +11,7 @@
 
 static short	is_critical_directory(const char *cwd)
 {
+	const char *home_dir = getenv("HOME");
 	return (strcmp(cwd, "/") == 0 ||
 			strcmp(cwd, "/home") == 0 ||
 			strcmp(cwd, "/usr") == 0 ||
@@ -26,7 +27,8 @@ static short	is_critical_directory(const char *cwd)
 			strcmp(cwd, "/sbin") == 0 ||
 			strcmp(cwd, "/bin") == 0 ||
 			strcmp(cwd, "/root") == 0 ||
-			strcmp(cwd, "/dev") == 0);
+			strcmp(cwd, "/dev") == 0 ||
+			(home_dir && strcmp(cwd, home_dir) == 0));;;
 }
 
 
