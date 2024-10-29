@@ -25,7 +25,7 @@
 # include <curl/curl.h>
 
 /***************** UPDATE *******************/
-#define CURRENT_VERSION "1.2.3"
+#define CURRENT_VERSION "1.2.4"
 #define REPO_OWNER "MathysCogne"
 #define REPO_NAME "Make_My_File-42"
 
