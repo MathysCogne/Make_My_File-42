@@ -39,12 +39,17 @@ char	*get_default_input(const char *prompt, const char *default_value)
 void	free_malloc(t_make_config *config)
 {
 	free(config->name);
-    free(config->src_files);
-    free(config->src_file_bonus);
-    free(config->header_files);
-    free(config->obj_dir);
-    free(config->compiler);
-    free(config->cflags);
+	free(config->src_dir);
+	free(config->src_files);
+	free(config->src_file_bonus);
+	free(config->header_dir);
+	free(config->header_files);
+	free(config->obj_dir);
+	free(config->compiler);
+	free(config->cflags);
+	free(config->ldflags);
+	free(config->libs);
+	free(config);
 }
 
 void	default_config(t_make_config *config)

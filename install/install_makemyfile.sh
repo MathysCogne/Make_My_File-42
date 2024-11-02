@@ -29,7 +29,7 @@ if [ -z "$LATEST_RELEASE" ]; then
 fi
 
 # Check if the download was successful
-echo -e "${GREEN}\n🚀  Downloading the latest version ($LATEST_RELEASE) of ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN}...${C_RESET}\n"
+echo -e "\n🚀  Downloading the latest version ${BOLD}${CYAN}[$LATEST_RELEASE] of ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN}...${C_RESET}\n"
 curl -L -o "$EXECUTABLE_NAME" "https://github.com/$REPO_OWNER/$REPO_NAME/releases/download/$LATEST_RELEASE/$EXECUTABLE_NAME"
 if [ $? -ne 0 ]; then
 	echo -e "${RED}❌  Error: Download failed. Please check your network connection.${C_RESET}"
@@ -39,12 +39,14 @@ fi
 chmod +x "$EXECUTABLE_NAME"
 
 # Move to the installation directory
-echo -e "${GREEN}\n💾  Installing ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN} to ${BOLD}${CYAN}$INSTALL_DIR${C_RESET}${GREEN}...${C_RESET}"
+echo -e "\nInstalling $EXECUTABLE_NAME to ${ITALIC}$INSTALL_DIR...${C_RESET}"
+
 mv "$EXECUTABLE_NAME" "$INSTALL_DIR"
 
 if [ -f "$INSTALL_DIR/$EXECUTABLE_NAME" ]; then
-	echo -e "${GREEN}✅  ${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN} installed successfully!${C_RESET}"
-	echo -e "${ITALIC}🔍 To create your Makefile, run the command '${C_RESET}${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${ITALIC}' at the root of your project.${C_RESET}"
+	echo -e "$EXECUTABLE_NAME installed successfully !\n"
+	echo -e "${GREEN}🔍 To create your Makefile, run the command '${C_RESET}${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN}${BOLD}' at the root of your project.${C_RESET}"
+	echo -e "${ITALIC}💡 For the changes to take effect, please restart your terminal${C_RESET}"
 else
 	echo -e "${RED}\n\n❌  Installation failed. Please check your permissions.${C_RESET}"
 fi
