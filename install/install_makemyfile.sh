@@ -54,5 +54,5 @@ fi
 # Add ~/bin to PATH if it is not already there
 if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
 	echo "export PATH=\$PATH:$INSTALL_DIR" >> "$HOME/.bashrc"
-	echo -e "${ITALIC}💡 $INSTALL_DIR added to PATH. Please restart your terminal or run 'source ~/.bashrc' for changes to take effect.${C_RESET}"
+	echo -e "${ITALIC}💡 $INSTALL_DIR added to PATH. Please run ${BOLD}${CYAN}'source ~/.bashrc' ${C_RESET}${ITALIC}for changes to take effect.${C_RESET}"
 fi

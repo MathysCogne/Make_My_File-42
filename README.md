@@ -35,7 +35,7 @@ While **Make My File** automates Makefile generation, knowing how to create one 
 
 ## Installation
 
-1. Run the installer script: (Note: Script work on Linux and macOS.)
+1. Run the installer script and follow instructions: (Note: Script work on Linux and macOS.)
 ```bash
 bash -c "$(curl -L https://github.com/MathysCogne/Make_My_File-42/releases/download/1.2.6/install_makemyfile.sh)"
 ```
