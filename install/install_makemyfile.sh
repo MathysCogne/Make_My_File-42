@@ -3,7 +3,7 @@
 REPO_OWNER="MathysCogne"
 REPO_NAME="Make_My_File-42"
 EXECUTABLE_NAME="makemyfile"
-INSTALL_DIR="/usr/local/bin"
+INSTALL_DIR="$HOME/bin"
 
 BOLD="\033[1m"
 ITALIC="\033[3m"
@@ -12,10 +12,10 @@ CYAN="\033[36m"
 RED="\033[31m"
 C_RESET="\033[0m"
 
-# Root verification
-if [ "$EUID" -ne 0 ]; then
-	echo -e "${RED}\n\n⛔  Please run as root or use ${BOLD}sudo${C_RESET}${RED} to install the program.${C_RESET}"
-	exit
+# Check if the installation directory exists
+if [ ! -d "$INSTALL_DIR" ]; then
+	mkdir -p "$INSTALL_DIR"
+	echo -e "${GREEN}💾 Directory $INSTALL_DIR created for installation.${C_RESET}"
 fi
 
 # Download the latest version from GitHub
@@ -38,15 +38,21 @@ fi
 
 chmod +x "$EXECUTABLE_NAME"
 
-# Move to the installation directory
+# Move the executable to the installation directory
 echo -e "\nInstalling $EXECUTABLE_NAME to ${ITALIC}$INSTALL_DIR...${C_RESET}"
 
 mv "$EXECUTABLE_NAME" "$INSTALL_DIR"
 
 if [ -f "$INSTALL_DIR/$EXECUTABLE_NAME" ]; then
-	echo -e "$EXECUTABLE_NAME installed successfully !\n"
+	echo -e "${GREEN}✅  $EXECUTABLE_NAME installed successfully!\n${C_RESET}"
 	echo -e "${GREEN}🔍 To create your Makefile, run the command '${C_RESET}${BOLD}${CYAN}$EXECUTABLE_NAME${C_RESET}${GREEN}${BOLD}' at the root of your project.${C_RESET}"
-	echo -e "${ITALIC}💡 For the changes to take effect, please restart your terminal${C_RESET}"
 else
 	echo -e "${RED}\n\n❌  Installation failed. Please check your permissions.${C_RESET}"
+	exit 1
+fi
+
+# Add ~/bin to PATH if it is not already there
+if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
+	echo "export PATH=\$PATH:$INSTALL_DIR" >> "$HOME/.bashrc"
+	echo -e "${ITALIC}💡 $INSTALL_DIR added to PATH. Please restart your terminal or run 'source ~/.bashrc' for changes to take effect.${C_RESET}"
 fi
