@@ -3,7 +3,7 @@
 REPO_OWNER="MathysCogne"
 REPO_NAME="Make_My_File-42"
 EXECUTABLE_NAME="makemyfile"
-INSTALL_DIR="$HOME/bin"
+INSTALL_DIR="$HOME/.local/bin"
 
 BOLD="\033[1m"
 ITALIC="\033[3m"
